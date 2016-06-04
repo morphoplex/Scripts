@@ -12,8 +12,8 @@ set -o errexit
 
 module load fastqc
 
-for i in ../*.fastq.gz
+for i in ../SequenceData/RawSeqs/*.fastq.gz
 do
-        fastqc -o . $i
+        fastqc -o ../Analyses/FastQC/ $i
 done
 
