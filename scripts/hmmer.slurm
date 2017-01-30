@@ -1,10 +1,14 @@
 #!/bin/sh
-#SBATCH --job-name=hmmer
+#SBATCH --job-name=hmm
 #SBATCH --account=uio
 #SBATCH --output=slurm-%j.base
+##SBATCH --partition=hugemem
 #SBATCH --time=100:00:00
-#SBATCH --mem-per-cpu=8G
+##SBATCH --ntasks=4
+#SBATCH --mem-per-cpu=16G
 
+module purge
 module load hmmer
 
-hmmscan --tblout /projects/researchers/researchers01/jonbra/MULTICELL/Andreas/potential_lncRNA/second_try/hmmer_PfamB.out -E 0.0001 /usit/abel/u1/jonbra/Pfam-B.hmm /projects/researchers/researchers01/jonbra/MULTICELL/Andreas/potential_lncRNA/second_try/merged_fixed_no_gene_name_200nt_150nt_unique_tcons.fasta.transdecoder.pep
+hmmscan --cpu 8 --domtblout TrinotatePFAM.out /work/databases/bio/trinotate/Pfam-A.hmm ../trinity/Trinity.longest.isoform.cut.fasta.transdecoder_dir/longest_orfs.pep > pfam.log
+
