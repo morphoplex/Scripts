@@ -25,7 +25,7 @@ source /cluster/bin/jobsetup
 module purge   # clear any inherited modules
 set -o errexit
 #do the trimming
-java -jar ~/Trimmomatic-0.35/trimmomatic-0.35.jar PE -phred33 -threads 8 ../rawdata/$SAMPLE_ID_R1 ../rawdata/$SAMPLE_ID_R2 ../QC/Trimmomatic/$NEWTRIMFILE_R1 ../QC/Trimmomatic/$SE_TRIMFILE_R1 ../QC/Trimmomatic/$NEWTRIMFILE_R2 ../QC/Trimmomatic/$SE_TRIMFILE_R2 ILLUMINACLIP:/usit/abel/u1/jonbra/Trimmomatic-0.35/adapters/TruSeq3-SE.fa:2:28:10 LEADING:28 TRAILING:28 SLIDINGWINDOW:4:28 MINLEN:36
+java -jar ~/Trimmomatic-0.35/trimmomatic-0.35.jar PE -phred33 -threads 8 ../rawdata/$SAMPLE_ID_R1 ../rawdata/$SAMPLE_ID_R2 ../QC/Trimmomatic/$NEWTRIMFILE_R1 ../QC/Trimmomatic/$SE_TRIMFILE_R1 ../QC/Trimmomatic/$NEWTRIMFILE_R2 ../QC/Trimmomatic/$SE_TRIMFILE_R2 ILLUMINACLIP:/usit/abel/u1/jonbra/Trimmomatic-0.35/adapters/TruSeq3-PE.fa:2:28:10 LEADING:28 TRAILING:28 SLIDINGWINDOW:4:28 MINLEN:36
 EOF
 
 sbatch /projects/researchers/researchers01/jonbra/Beroe/scripts/trimmomatic_${SAMPLE_ID_R1}.slurm
